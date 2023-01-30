@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-img{
+.gallery-img{
     width: 300px;
     height: 200px;
 }
@@ -22,7 +22,8 @@ img{
 
 .gallery-img-div{
     width: 300px;
-    border: 1px solid black;
+    border:1px solid black;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.25);
     margin: 16px;
 }
 

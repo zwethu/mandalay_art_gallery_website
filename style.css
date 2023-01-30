@@ -10,6 +10,8 @@ body{
     color: black;
 }
 
+
+
 /* normal phones size */
 @media screen and (max-width: 480px) {
     #header-div{
@@ -178,7 +180,7 @@ body{
 }
 
 /* normal laptops and monitors size */
-@media screen and (min-width: 1024px) and (max-width: 1248px) {
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
     #mobile-div,.sidenav{
         display: none;
     }
@@ -227,11 +229,45 @@ body{
         box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
         border-radius: 5px;
     }
+
+    #gallery{
+        padding: 32px 0px;
+    }
+    
+    .gallery-img{
+        width: 300px;
+        height: 200px;
+    }
+    
+    .gallery-title{
+        text-align:center;
+        font-size: 36px;
+    }
+    
+    .gallery-div{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: center;
+        padding: 24px;
+    }
+    
+    .gallery-img-div{
+        width: 300px;
+        /* border:1px solid black; */
+        
+        box-shadow: 3px 3px 4px rgba(0,0,0,0.25);
+        margin: 8px;
+    }
+    
+    .gallery-img-div>p{
+        padding:8px 0px 8px 8px;
+    }
+    
     
 }
 
 /* big monitors size */
-@media screen and (min-width: 1248px){
+@media screen and (min-width: 1300px){
     #mobile-div,.sidenav{
         display: none;
     }
@@ -278,6 +314,39 @@ body{
     #nav-bar>a:hover{
         box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
         border-radius: 5px;
+    }
+    
+    #gallery{
+        padding: 32px 0px;
+    }
+    
+    .gallery-img{
+        width: 300px;
+        height: 200px;
+    }
+    
+    .gallery-title{
+        text-align:center;
+        font-size: 36px;
+    }
+    
+    .gallery-div{
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        justify-content: center;
+        padding: 24px;
+    }
+    
+    .gallery-img-div{
+        width: 300px;
+        /* border:1px solid black; */
+        
+        box-shadow: 3px 3px 4px rgba(0,0,0,0.25);
+        margin: 8px;
+    }
+    
+    .gallery-img-div>p{
+        padding:8px 0px 8px 8px;
     }
     
 }
