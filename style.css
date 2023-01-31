@@ -67,6 +67,53 @@ body{
       #selected-mobile-div{
         color: white;
       }
+
+      #gallery{
+        padding: 32px 0px;
+    }
+    
+    .gallery-img{
+        width: 310px;
+        height: 200px;
+    }
+    
+    .gallery-title{
+        text-align:center;
+        font-size: 36px;
+    }
+    
+    .gallery-div{
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+        padding: 24px;
+    }
+    
+    .gallery-img-div{
+        width: 310px;
+        /* border:1px solid black; */
+        
+        box-shadow: 3px 3px 4px rgba(0,0,0,0.25);
+        margin: 8px;
+    }
+    
+    .gallery-img-div>p{
+        padding:8px 0px 8px 8px;
+    }
+
+    .gallery-img-link{
+        text-decoration: none;
+        color: black;
+    }
+
+    .gallery-img-link:active{
+        color:black;
+    }
+
+    #welcome-img>img{
+        width: 100%;
+        height: 300px;
+    }
 }
 
 /* big phones and tablets size */
@@ -125,6 +172,52 @@ body{
         color: white;
       }
 
+      #gallery{
+        padding: 32px 0px;
+    }
+    
+    .gallery-img{
+        width: 300px;
+        height: 200px;
+    }
+    
+    .gallery-title{
+        text-align:center;
+        font-size: 36px;
+    }
+    
+    .gallery-div{
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+        padding: 24px;
+    }
+    
+    .gallery-img-div{
+        width: 300px;
+        /* border:1px solid black; */
+        
+        box-shadow: 3px 3px 4px rgba(0,0,0,0.25);
+        margin: 8px;
+    }
+    
+    .gallery-img-div>p{
+        padding:8px 0px 8px 8px;
+    }
+
+    .gallery-img-link{
+        text-decoration: none;
+        color: black;
+    }
+
+    .gallery-img-link:active{
+        color:black;
+    }    
+
+    #welcome-img>img{
+        width: 100%;
+        height: 500px;
+    }
 }
 
 /* big tablets and small laptops size */
@@ -167,15 +260,60 @@ body{
     
     #selected-nav{
         color: blue;
-        border: 1px solid black;
         box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
         border-radius: 5px;
     }
 
     #nav-bar>a:hover{
-        border: 1px solid black;
         box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
         border-radius: 5px;
+    }
+
+    #gallery{
+        padding: 32px 0px;
+    }
+    
+    .gallery-img{
+        width: 300px;
+        height: 200px;
+    }
+    
+    .gallery-title{
+        text-align:center;
+        font-size: 36px;
+    }
+    
+    .gallery-div{
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        padding: 24px;
+    }
+    
+    .gallery-img-div{
+        width: 300px;
+        /* border:1px solid black; */
+        
+        box-shadow: 3px 3px 4px rgba(0,0,0,0.25);
+        margin: 8px;
+    }
+    
+    .gallery-img-div>p{
+        padding:8px 0px 8px 8px;
+    }
+
+    .gallery-img-link{
+        text-decoration: none;
+        color: black;
+    }
+
+    .gallery-img-link:active{
+        color:black;
+    }    
+    
+    #welcome-img>img{
+        width: 100%;
+        height: 500px;
     }
 }
 
@@ -219,13 +357,11 @@ body{
     
     #selected-nav{
         color: blue;
-        border: 1px solid black;
         box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
         border-radius: 5px;
     }
 
     #nav-bar>a:hover{
-        border: 1px solid black;
         box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
         border-radius: 5px;
     }
@@ -262,8 +398,20 @@ body{
     .gallery-img-div>p{
         padding:8px 0px 8px 8px;
     }
+
+    .gallery-img-link{
+        text-decoration: none;
+        color: black;
+    }
+
+    .gallery-img-link:active{
+        color:black;
+    }    
     
-    
+    #welcome-img>img{
+        width: 100%;
+        height: 500px;
+    }
 }
 
 /* big monitors size */
@@ -327,9 +475,10 @@ body{
     
     .gallery-title{
         text-align:center;
-        font-size: 36px;
+        font-size: 64px;
+        font-weight: 600;
     }
-    
+
     .gallery-div{
         display: grid;
         grid-template-columns: auto auto auto auto;
@@ -347,7 +496,21 @@ body{
     
     .gallery-img-div>p{
         padding:8px 0px 8px 8px;
+        text-decoration: none;
     }
     
+    .gallery-img-link{
+        text-decoration: none;
+        color: black;
+    }
+
+    .gallery-img-link:active{
+        color:black;
+    }
+
+    #welcome-img>img{
+        width: 100%;
+        height: 500px;
+    }
 }
 

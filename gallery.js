@@ -1,35 +1,19 @@
 //ImageData is in this order - image url, artist name, picture name, width, height, size, drawing type, price  
 const imageData = [
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    ["background.png","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
+    
   ];
   
   const section = document.getElementById("gallery"); // get element from gallery section
@@ -51,11 +35,21 @@ const imageData = [
   //loop for the every data in the imageData array
   for (let i = 0; i < imageData.length; i++) {
     
+    let link = document.createElement("a");// create a tag to be clickable
+
+    link.setAttribute("target","_blank");// target blank for new tab
+
+    link.href = "assets/images/".concat(imageData[i][0]);//first index of two dimensional array is the url of image
+
+    link.classList.add("gallery-img-link");// give the class name "gallery-img-link"
+
+    galleryDiv.appendChild(link);//cover div with a tag so it will be clickable
+
     let div = document.createElement("div"); //create container for the image and other data
   
     div.classList.add("gallery-img-div"); //give the class name "gallery-img-div" to the div
   
-    galleryDiv.appendChild(div);// add div 
+    link.appendChild(div);// add div 
   
     let img = document.createElement("img");// create img element
   
