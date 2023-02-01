@@ -108,6 +108,12 @@ body {
     color: black;
   }
 
+
+  .gallery-img{
+    width: 100%;
+    height: 200px;
+  }
+
   #welcome-img{
     position: relative;
     width: 100%;
@@ -210,12 +216,11 @@ body {
     padding: 24px;
   }
 
-  .gallery-img-div {
-    width: 300px;
-    /* border:1px solid black; */
 
+  .gallery-img-div {
+    width: 100%;
+    /* border:1px solid black; */
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
-    margin: 8px;
   }
 
   .gallery-img-div > p {
@@ -229,6 +234,11 @@ body {
 
   .gallery-img-link:active {
     color: black;
+  }
+
+  .gallery-img{
+    width: 100%;
+    height: 250px;
   }
 
   #welcome-img{
