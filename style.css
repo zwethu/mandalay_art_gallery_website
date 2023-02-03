@@ -218,9 +218,10 @@ body {
 
 
   .gallery-img-div {
-    width: 100%;
+    width: 450px;
     /* border:1px solid black; */
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+    margin: 8px;
   }
 
   .gallery-img-div > p {
