@@ -1,55 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Mandalay Art Gallery</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Mandalay Art Gallery</title>
 </head>
+
 <body>
-    <header>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" id="selected-mobile-div">Art Gallery</a>
-            <a href="#">Art Exhibition</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-          </div>
-          <div id="mobile-div">
-            <a href=""><img src="assets/images/logo.png" id="header-logo"></a>
-            <p style="font-size:32px;cursor:pointer" onclick="openNav()">&#9776;</p>
-          </div>
-        <div id="header-div">
-            <a href=""><img src="assets/images/logo.png" id="header-logo"></a>
-            <nav id="nav-bar">
-                <a href="" id="selected-nav">Art Gallery</a>
-                <a href="">Art Exhibition</a>
-                <a href="">About Us</a>
-                <a href="">Contact Us</a>
-            </nav>
-        </div>
-    </header>
-    <section id="welcome-img">
-      <img src="assets/images/background.jpg" alt="">
-      <p>Welcome from Mandalay Art Gallery</p>
-    </section>
-    <section id="gallery">
-      <script src="gallery.js"></script>
+  <header>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#" id="selected-mobile-div">Art Gallery</a>
+      <a href="#">Art Exhibition</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div id="mobile-div">
+      <a href=""><img src="assets/images/logo.png" id="header-logo"></a>
+      <p style="font-size:32px;cursor:pointer" onclick="openNav()">&#9776;</p>
+    </div>
+    <div id="header-div">
+      <a href=""><img src="assets/images/logo.png" id="header-logo"></a>
+      <nav id="nav-bar">
+        <a href="" id="selected-nav">Art Gallery</a>
+        <a href="">Art Exhibition</a>
+        <a href="">About Us</a>
+        <a href="">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+  <section id="welcome-img">
+    <img src="assets/images/background.jpg" alt="">
+    <p>Welcome from Mandalay Art Gallery</p>
   </section>
-    <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "200px";
-        }
-        
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-        }
-        </script>
-           
+  <section id="gallery">
+    <script src="gallery.js"></script>
+  </section>
+  <footer>
+    <section id="about-us">
+      <div id="about-us-div">
+        <div id="about-us-content-div">
+          <object data="assets/images/address_icon.svg" id="footer-svg"></object>
+          <p>Building ( 6 ), Room - 105, Aungchanthar Housing, Bahan Township, Yangon, Myanmar.</p>
+        </div>
+        <div id="about-us-content-div">
+          <object data="assets/images/phone_icon.svg" id="footer-svg"></object>
+          <p>+959 5402275, +959 5402275.</p>
+        </div>
+        <div id="about-us-content-div">
+          <object data="assets/images/email_icon.svg" id="footer-svg"></object>
+          <p>artisthlahtunaung56@gmail.com
+            artisthlahtunaung56@gmail.com</p>
+        </div>
+      </div>
+    </section>
+    <section id="follow-us">
+      <div id="follow-us-div">
+        <div id="facebook-svg-div"><object data="assets/images/facebook.svg" id="facebook-svg"></object></div>
+        <p>Follow Us on Facebook</p>
+      </div>
+    </section>
+    <section id="main-footer">
+      <img src="assets/images/plain_logo.png" id="about-us-img">
+      <p>Follow Us on Facebook</p>
+    </section>
+  </footer>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "200px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+
 </body>
+
 </html>

@@ -76,7 +76,7 @@ body {
 }
 
 #nav-bar > a {
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   text-decoration: none;
   align-items: center;
@@ -85,7 +85,7 @@ body {
 }
 
 #nav-bar > a:active {
-  color: blue;
+  color: #c33c54;
 }
 
 #nav-bar > a:hover {
@@ -94,9 +94,7 @@ body {
 }
 
 #selected-nav {
-  color: blue;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  color: #c33c54;
 }
 
 #welcome-img {
@@ -165,6 +163,87 @@ body {
   color: black;
 }
 
+footer {
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+#about-us {
+  width: 45%;
+}
+
+#follow-us {
+  width: 20%;
+}
+
+#main-footer {
+  width: 35%;
+}
+
+#about-us,
+#follow-us {
+  background-color: #32213a;
+}
+
+#main-footer {
+  background-color: #383b53;
+}
+
+#footer-svg{
+  width: 25px;
+  height: 25px;
+  display: inline;
+  margin: 24px;
+}
+
+#facebook-svg{
+
+  width: 65px;
+  height: 65px;
+  display: block;
+  margin: 24px;
+}
+
+#follow-us{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#facebook-svg-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#follow-us-div > p{
+  padding: 0px 5%;
+  width: 100%;
+  text-align: center;
+}
+
+#follow-us>p{
+  width: 100%;
+}
+
+#about-us-img{
+  width: 200px;
+  height: 200px;
+}
+
+#about-us-div {
+  padding: 16px;
+}
+
+#about-us-content-div {
+  display: flex;
+  align-items: center;
+}
+
+#about-us-content-div > p {
+  display: inline;
+}
 
 /* normal phones size */
 @media screen and (max-width: 480px) {
@@ -179,7 +258,6 @@ body {
 
 /* big phones and tablets size */
 @media screen and (min-width: 480px) and (max-width: 768px) {
-
   .sidenav a {
     padding: 8px 8px 8px 24px;
   }
@@ -245,9 +323,8 @@ body {
   }
 
   #nav-bar > a {
-    font-size: 20px;
-    margin: 0px 8px;
-    padding: 0px 12px;
+    font-size: 18px;
+    padding: 0px 4px;
   }
 
   #welcome-img {
@@ -271,7 +348,6 @@ body {
   .gallery-img-div {
     width: 300px;
   }
-
 }
 
 /* big monitors size */
@@ -290,9 +366,8 @@ body {
   }
 
   #nav-bar > a {
-    font-size: 24px;
-    margin: 0px 8px;
-    padding: 0px 16px;
+    font-size: 20px;
+    padding: 0px 10px;
   }
 
   #welcome-img {
