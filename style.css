@@ -188,63 +188,99 @@ footer {
 
 #main-footer {
   background-color: #383b53;
-}
+} 
 
-#footer-svg{
+.footer-svg {
   width: 25px;
   height: 25px;
   display: inline;
   margin: 24px;
 }
 
-#facebook-svg{
-
-  width: 65px;
-  height: 65px;
-  display: block;
-  margin: 24px;
+#facebook-svg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 24px;
+  pointer-events: none;
 }
 
-#follow-us{
+#follow-us {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#facebook-svg-div{
+#facebook-svg-div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#follow-us-div > p{
+#follow-us-div > p {
   padding: 0px 5%;
-  width: 100%;
+  width: 80%;
   text-align: center;
 }
 
-#follow-us>p{
+#follow-us-div > a {
+  color: white;
+}
+
+#follow-us > p {
   width: 100%;
 }
 
-#about-us-img{
+#footer-img-div{
+  display: flex;
+  justify-content: center;
+}
+
+#footer-img {
   width: 200px;
   height: 200px;
 }
 
 #about-us-div {
-  padding: 16px;
+  padding: 24px 16px;
 }
 
-#about-us-content-div {
+.about-us-content-div {
   display: flex;
   align-items: center;
 }
 
-#about-us-content-div > p {
+.about-us-content-div > p {
   display: inline;
+  font: 24px;
+  line-height: 25px;
 }
 
+#footer-nav-div {
+  display: flex;
+  justify-content: center;
+  margin: 16px 8px;
+}
+
+.footer-nav {
+  display: inline;
+  margin: 0px 8px;
+  font-size: 20px;
+}
+
+.nav-divider {
+  height: 20px;
+  width: 1px;
+  display: inline-block;
+  color: white;
+  background-color: white;
+  margin-top: 2px;
+}
+
+#copyright-p {
+  font-size: 14px;
+  text-align: right;
+  margin-bottom: 4px;
+}
 /* normal phones size */
 @media screen and (max-width: 480px) {
   #header-div {
