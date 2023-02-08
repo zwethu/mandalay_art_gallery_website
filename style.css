@@ -97,8 +97,6 @@ body {
   border-radius: 5px;
 }
 
-
-
 #welcome-img {
   position: relative;
   width: 100%;
@@ -288,7 +286,7 @@ footer {
 #copyright-p {
   font-size: 14px;
   text-align: right;
-  margin-bottom: 4px;
+  padding-bottom: 4px;
   margin-right: 4px;
 }
 /* normal phones size */
