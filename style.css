@@ -26,7 +26,7 @@ body {
 .sidenav a {
   padding: 8px 8px 8px 16px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
   color: #818181;
   display: block;
   transition: 0.3s;
@@ -253,6 +253,15 @@ footer {
 
 .about-us-content-div > p {
   display: inline;
+}
+
+.footer-nav{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-nav:hover{
+  color: skyblue;
 }
 
 .footer-nav-a{
