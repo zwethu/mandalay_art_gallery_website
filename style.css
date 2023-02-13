@@ -75,10 +75,6 @@ body {
   padding: 8px 0px;
 }
 
-#selected-nav {
-  color: blue;
-}
-
 #nav-bar > a {
   font-size: 16px;
   display: flex;
@@ -86,6 +82,11 @@ body {
   align-items: center;
   margin: 0px 4px;
   padding: 0px 8px;
+  color: black;
+}
+
+#nav-bar #selected-nav {
+  color: blue;
 }
 
 #nav-bar > a:hover {
