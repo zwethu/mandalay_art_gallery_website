@@ -1,8 +1,13 @@
 /* */
 * {
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 body {
@@ -167,7 +172,7 @@ footer {
 }
 
 
-#about-us {
+#contact-us {
   width: 45%;
 }
 
@@ -180,7 +185,7 @@ footer {
   padding-top: 8px;
 }
 
-#about-us,
+#contact-us,
 #follow-us {
   background-color: #32213a;
 }
@@ -239,16 +244,16 @@ footer {
   height: 200px;
 }
 
-#about-us-div {
+#contact-us-div {
   padding: 24px 16px;
 }
 
-.about-us-content-div {
+.contact-us-content-div {
   display: flex;
   align-items: center;
 }
 
-.about-us-content-div > p {
+.contact-us-content-div > p {
   display: inline;
 }
 
@@ -309,7 +314,7 @@ footer {
     display: block;
   }
 
-  #about-us{
+  #contact-us{
     width: 100%;
   }
 
@@ -322,7 +327,7 @@ footer {
     width: 100%;
   }
 
-  #about-us-div {
+  #contact-us-div {
     padding: 16px 8px;
   }
 
@@ -376,7 +381,7 @@ footer {
     display: block;
   }
 
-  #about-us{
+  #contact-us{
     width: 100%;
   }
 
@@ -389,7 +394,7 @@ footer {
     width: 100%;
   }
 
-  #about-us-div {
+  #contact-us-div {
     padding: 16px 8px;
   }
 
@@ -444,7 +449,7 @@ footer {
     width: 300px;
   }
 
-  #about-us-div {
+  #contact-us-div {
     padding: 16px 8px;
   }
 
@@ -485,11 +490,11 @@ footer {
     height: 20px;
   }
 
-  #about-us-div{
+  #contact-us-div{
     padding: 24px 8px;
   }
 
-  .about-us-content-div > p{
+  .contact-us-content-div > p{
     font-weight: 300;
   }
 
@@ -554,7 +559,7 @@ footer {
     width: 300px;
   }
 
-  #about-us-div {
+  #contact-us-div {
     padding: 16px 8px;
   }
 
