@@ -1,10 +1,9 @@
 /* */
 * {
-  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} 
 
 html{
   scroll-behavior: smooth;
@@ -88,6 +87,7 @@ body {
   margin: 0px 4px;
   padding: 0px 8px;
   color: black;
+  font-weight: 500;
 }
 
 #nav-bar #selected-nav {
@@ -148,8 +148,10 @@ body {
 .gallery-img-div {
   width: 310px;
   /* border:1px solid black; */
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+  background-color: gainsboro;
+  
   margin: 8px;
+  border-radius: 0px 0px 12px 12px;
 }
 
 .gallery-img-div > p {
