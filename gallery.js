@@ -13,7 +13,6 @@ const imageData = [
     ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
     ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
     ["background.jpg","Artist Name","caption", "11", "11", "medium", "acrylic","300,000,000"],
-    
   ];
   
   const section = document.getElementById("gallery"); // get element from gallery section

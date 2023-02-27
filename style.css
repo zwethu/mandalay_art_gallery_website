@@ -76,7 +76,7 @@ body {
 #nav-bar {
   display: flex;
   justify-content: space-around;
-  padding: 8px 0px;
+
 }
 
 #nav-bar > a {
@@ -84,19 +84,17 @@ body {
   display: flex;
   text-decoration: none;
   align-items: center;
-  margin: 0px 4px;
-  padding: 0px 8px;
-  color: black;
-  font-weight: 500;
+  margin: 0px 6px;
+  padding: 0px 12px;
+  color: #818181;
 }
 
 #nav-bar #selected-nav {
-  color: blue;
+  color: black;
 }
 
 #nav-bar > a:hover {
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  color: black;
 }
 
 #welcome-img {
@@ -148,17 +146,19 @@ body {
 .gallery-img-div {
   width: 310px;
   /* border:1px solid black; */
-  background-color: gainsboro;
-  
+  /* background-color: gainsboro;
+  border-radius: 0px 0px 20px 20px; */
   margin: 8px;
-  border-radius: 0px 0px 12px 12px;
+  border: 1px solid #818181;
+  border-radius: 3px;
 }
 
 .gallery-img-div > p {
-  padding: 8px 0px 8px 8px;
+  padding: 8px 0px 8px 12px;
 }
 
 .gallery-img {
+  padding: 12px;
   width: 100%;
   height: 200px;
 }
@@ -527,11 +527,11 @@ footer {
   }
 
   #header-div {
-    padding: 8px 24px;
+    padding: 0px 24px;
   }
 
   #header-logo {
-    height: 65px;
+    height: 60px;
   }
 
   #nav-bar > a {
@@ -595,11 +595,11 @@ footer {
   }
 
   #header-div {
-    padding: 8px 24px;
+    padding: 4px 24px;
   }
 
   #header-logo {
-    height: 75px;
+    height: 70px;
   }
 
   #nav-bar > a {
@@ -609,6 +609,7 @@ footer {
 
   #welcome-img {
     height: 500px;
+
   }
 
   #welcome-img > p {
