@@ -260,8 +260,8 @@ footer {
 }
 
 .footer-nav{
-  width: 100px;
-  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .footer-nav:hover{
