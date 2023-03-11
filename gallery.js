@@ -9,7 +9,7 @@ var paintingUrl =
 var bioUrl =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXXprAoYqZ_t_pIIMTGlO_AuMDXBW4Na9u1Gn1qlI2_9xD4Qy-y6Esd2FiBe4TvIgb71dDX3tMsN0Z/pub?output=csv";
 
-var exhbitionData = [];
+var exhibitionData = [];
 var artistData = [];
 var paintingData = [];
 var bio = [];
@@ -18,6 +18,7 @@ var fetchData = (url, dataArray) => {
   return fetch(url)
     .then((response) => response.text())
     .then((data) => {
+      data = data.replace(/\r/g, '');
       const rows = data.split("\n");
       const headers = rows[0].split(",");
       const result = rows.slice(1).map((row) => {
@@ -31,91 +32,105 @@ var fetchData = (url, dataArray) => {
 };
 
 Promise.all([
-  fetchData(exhibtionUrl, exhbitionData),
+  fetchData(exhibtionUrl, exhibitionData),
   fetchData(artistUrl, artistData),
   fetchData(paintingUrl, paintingData),
   fetchData(bioUrl, bio),
 ])
   .then(() => {
-    createGallery(9,14);
-    // do something with the data, e.g. append to the DOM
+    console.log(exhibitionData);
+    console.log(artistData);
+    console.log(paintingData);
+    console.log(bio);
+    createGallery(1,11);  
   })
   .catch((error) => console.error(error));
 
- 
- function createGallery(startPoint,endPoint){
-   const section = document.getElementById("gallery"); // get element from gallery section
-  
-  const title = document.createElement("h1"); // create h1 for header
-  
-  title.textContent = "Gallery"; // give h1 value of "Gallery"
-  
-  title.classList.add("gallery-title"); //give the class name "gallery-title to that h1 element"
-  
-  section.append(title); // add created element title(header) into the section element
-  
-  const galleryDiv = document.createElement("div");//create container for all img div
-  
-  galleryDiv.classList.add("gallery-div");//class name for galleryDiv
-  
-  section.append(galleryDiv);// add div to the section
-  
-  //loop for the every data in the imageData array
+function createGallery(startPoint, endPoint) {
+  const section = document.getElementById("gallery"); 
+
+  const title = document.createElement("h1"); 
+
+  title.textContent = "Gallery";
+
+  title.classList.add("gallery-title"); 
+
+  section.append(title); 
+
+  const galleryDiv = document.createElement("div"); 
+
+  galleryDiv.classList.add("gallery-div"); 
+
+  section.append(galleryDiv); 
+
+
   for (let i = startPoint; i <= endPoint; i++) {
-    
-    let link = document.createElement("a");// create a tag to be clickable
+    const link = document.createElement("a"); 
 
-    link.setAttribute("target","_blank");// target blank for new tab
+    link.setAttribute("target", "_blank"); 
 
-    link.href = "assets/".concat(paintingData[i]['img_url']);//first index of two dimensional array is the url of image
+    link.href = "assets/".concat(paintingData[i]["img_url"]); 
 
-    link.classList.add("gallery-img-link");// give the class name "gallery-img-link"
+    link.classList.add("gallery-img-link"); 
 
-    galleryDiv.appendChild(link);//cover div with a tag so it will be clickable
+    galleryDiv.appendChild(link);
 
-    let div = document.createElement("div"); //create container for the image and other data
-  
-    div.classList.add("gallery-img-div"); //give the class name "gallery-img-div" to the div
-  
-    link.appendChild(div);// add div 
-  
-    let img = document.createElement("img");// create img element
-  
-    img.src = "assets/".concat(paintingData[i]['img_url']);// first index of two dimensional array is the url of image
-  
-    img.classList.add("gallery-img");// give class name to the image
-  
-    div.appendChild(img);// add img to the div
-  
-    let artist = document.createElement("p");// create p element for artist
-  
-    artist.textContent = "Artist - ".concat(paintingData[i]['name']);//index 1 is the artist name
-  
+    const div = document.createElement("div");
+
+    div.classList.add("gallery-img-div"); 
+
+    link.appendChild(div);
+
+    const img = document.createElement("img"); 
+
+    img.src = "assets/".concat(paintingData[i]["img_url"]); 
+
+    img.classList.add("gallery-img"); 
+
+    div.appendChild(img); 
+
+    const artist = document.createElement("p");
+
+    artist.textContent = "Artist - ".concat(paintingData[i]["name"]);
+
     div.appendChild(artist);
-  
-    let caption = document.createElement("p");//create p for image title
-  
-    caption.textContent = "Title - ".concat(paintingData[i]['title']);// index 2 is the image title
-  
-    div.appendChild(caption);//add caption to the div
-  
-    let measurement = document.createElement("p");//create p for witdh and height data
-  
-    measurement.textContent = "Size - ".concat(paintingData[i]['width']).concat('" ').concat(paintingData[i]['height']).concat('"');// index 3 is width and index 4 is the height of the image
-  
-    div.appendChild(measurement);//add measurement to div
-  
-    let other = document.createElement("p");//create p for other data; size and drawing type
-  
-    other.textContent = paintingData[i]['size'].concat(" - ").concat(paintingData[i]['drawing type']);// index 5 is size and 6 is the drawing type of the image
-  
-    div.appendChild(other);//add that element to the div
-  
-    let price = document.createElement("p");//create p for price
-  
-    price.textContent = "Price - ".concat(paintingData[i]['price']);//index 7 is the price of the picture
-  
-    div.appendChild(price);// add price to the img
+
+    const caption = document.createElement("p");
+
+    caption.textContent = "Title - ".concat(paintingData[i]["title"]); 
+
+    div.appendChild(caption); 
+
+    const measurement = document.createElement("p"); 
+
+    measurement.textContent = "Size - "
+      .concat(paintingData[i]["width"])
+      .concat('" ')
+      .concat(paintingData[i]["height"])
+      .concat('"');
+
+    div.appendChild(measurement);
+
+    const other = document.createElement("p"); 
+
+    other.textContent = paintingData[i]["size"]
+      .concat(" - ")
+      .concat(paintingData[i]["drawing type"]); 
+
+    div.appendChild(other); 
+
+    const price = document.createElement("p"); 
+
+    price.textContent = "Price - ".concat(paintingData[i]["price"]);
+    
+    div.appendChild(price); 
+
+    const status = document.createElement('p');
+
+    status.textContent = paintingData[i]['status'];
+
+    status.className = 'painting-status';
+
+    div.appendChild(status);
   }
-  
- }
+}

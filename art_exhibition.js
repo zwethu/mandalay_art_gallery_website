@@ -1,525 +1,187 @@
-const exhibitionTitle = "Myeik Winn Htain, Nang (Tiger Nang) \n Art Exhibition";
+var exhibtionUrl =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSGv3CZajv7LkLXf_IaUVh29irPrwGh-IQ9s3Hef75987JmZJgaMR_7evbvzUjExc3hKuefhoKQUN90/pub?output=csv";
+var artistUrl =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_k9VdP0AFdKz0CMbPgCvn-Sb5bowNzWEccexOg1vzzNLrWdyxmCmAACq5mNanf8goOxjyhPJWxN_o/pub?output=csv";
 
-const place = "Mandalay Art Gallery";
+var paintingUrl =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-UfEUh8HHlX9hHITjcSPL7cv2yV5WSEYsOEObE8gD4h9jG-rLeTZcTXmPds_ks1biYWw1WNKo0ubv/pub?output=csv";
 
-const date = "14 - 1 - 2023 to 17 - 1 - 2023";
+var bioUrl =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXXprAoYqZ_t_pIIMTGlO_AuMDXBW4Na9u1Gn1qlI2_9xD4Qy-y6Esd2FiBe4TvIgb71dDX3tMsN0Z/pub?output=csv";
 
-const artists = ["Artist Nang (Tiger Nang)", "Artist Myeik Winn Htain"];
+var exhibitionData = [];
+var artistData = [];
+var paintingData = [];
+var bio = [];
 
-const artistsImg = [
-  "assets/images/bishamonten.jpg",
-  "assets/images/bishamonten.jpg",
-];
+var fetchData = (url, dataArray) => {
+  return fetch(url)
+    .then((response) => response.text())
+    .then((data) => {
+      data = data.replace(/\r/g, "");
+      const rows = data.split("\n");
+      const headers = rows[0].split(",");
+      const result = rows.slice(1).map((row) => {
+        const obj = {};
+        const values = row.split(",");
+        headers.forEach((header, i) => (obj[header] = values[i]));
+        return obj;
+      });
+      dataArray.push(...result);
+    });
+};
 
-const bioData = [
-  [
-    ["Date of birth", "23rd May 1956 in Myeik"],
-    ["Parents", "U Tun Kyaing ( Author Shwe Myeik Maung and Daw Saw Thi.)"],
-    [
-      "Studied Under",
-      "Studied at yangon Fine Art School From 1973 - 1976 Saya Gyi U Thein, Saya U Thu Kha, Saya U Lun Gywe, Saya U Myat Kyaw, U Ba Lone Lay and Saya U Mya Aye.",
-    ],
-    [
-      "1973",
-      "While teaching first year of painting, he entered comic book world with Moke Soe Gyi Comic ( Bo Tar Yar Ye’ Baw Thone Kyatt)",
-    ],
-    [
-      "Exhibition",
-      "Also drew comic paintings based on ancient Bagan stories and modern stories studies batik Painting from artist Saya Wa Thone and held batik painting shows and group painting shows with fellow artists.",
-    ],
-    [
-      "2006",
-      "50th Goldern Anniversary painting show with Artist Nang (his wife)",
-    ],
-    ["2007", "Painting show with Artist Nangt"],
-    [
-      "2010",
-      "A special Solo Show based on ancident Bagan historical battles of heroes on elephants and horses.",
-    ],
-  ],
-  [
-    ["Date of birth", "23rd May 1956 in Myeik"],
-    ["Parents", "U Tun Kyaing ( Author Shwe Myeik Maung and Daw Saw Thi.)"],
-    [
-      "Studied Under",
-      "Studied at yangon Fine Art School From 1973 - 1976 Saya Gyi U Thein, Saya U Thu Kha, Saya U Lun Gywe, Saya U Myat Kyaw, U Ba Lone Lay and Saya U Mya Aye.",
-    ],
-    [
-      "1973",
-      "While teaching first year of painting, he entered comic book world with Moke Soe Gyi Comic ( Bo Tar Yar Ye’ Baw Thone Kyatt)",
-    ],
-    [
-      "Exhibition",
-      "Also drew comic paintings based on ancient Bagan stories and modern stories studies batik Painting from artist Saya Wa Thone and held batik painting shows and group painting shows with fellow artists.",
-    ],
-    [
-      "2006",
-      "50th Goldern Anniversary painting show with Artist Nang (his wife)",
-    ],
-    ["2007", "Painting show with Artist Nangt"],
-    [
-      "2010",
-      "A special Solo Show based on ancident Bagan historical battles of heroes on elephants and horses.",
-    ],
-  ],
-];
+Promise.all([
+  fetchData(exhibtionUrl, exhibitionData),
+  fetchData(artistUrl, artistData),
+  fetchData(paintingUrl, paintingData),
+  fetchData(bioUrl, bio),
+])
+  .then(() => {
+    createBio();
+  })
+  .catch((error) => console.error(error));
 
-const exhibitionImageData = [
-  [
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-  ],
-  [
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-    [
-      "background.jpg",
-      "Artist Name",
-      "caption",
-      "11",
-      "11",
-      "medium",
-      "acrylic",
-      "300,000,000",
-    ],
-  ],
-];
+function createBio() {
+  for (let i = 0; i < 1; i++) {
+    let bioTitles = [];
 
-const exhibition = document.getElementById("exhibition"); // get the root element
+    let bioContents = [];
 
-const welcomeImageSec = document.createElement("section"); // new section for welcome img and text
+    let paintingList = [];
 
-welcomeImageSec.id = "welcome-img";
+    console.log(bio);
 
-exhibition.appendChild(welcomeImageSec); // add new section as the child of the gallery
+    bioTitles.push(bio[i]["title"].split("_"));
 
-const welcomeImg = document.createElement("img"); // welcome img
+    bioContents.push(bio[i]["content"].split("_"));
 
-welcomeImg.src = "assets/images/background.jpg";
+    paintingList = artistData[i]["paintings"].split("-");
 
-welcomeImageSec.appendChild(welcomeImg); // add under the welcome image section
+    let startId = paintingList[0];
 
-const welcomeText = document.createElement("p"); // welcome message text
+    let endId = paintingList[1];
 
-welcomeText.textContent = exhibitionTitle;
+    const section = document.getElementById("exhibition");
 
-welcomeImageSec.appendChild(welcomeText); // add under welcome image section
+    const artist = document.createElement("section");
 
-const exhibitionHeaderSec = document.createElement("section"); //section for the heading of the exhibition
+    artist.classList.add("artist-sec");
 
-exhibitionHeaderSec.id = "exhibition-header";
+    section.appendChild(artist);
 
-exhibition.appendChild(exhibitionHeaderSec); //add under the gallery
+    const artistImgDiv = document.createElement("div");
 
-const headerTitle = document.createElement("h1"); //create h1 for the heading title
+    artistImgDiv.className = "artist-img-div";
 
-headerTitle.id = "header-title";
+    artist.appendChild(artistImgDiv);
 
-headerTitle.textContent = exhibitionTitle;
+    const artistImg = document.createElement("img");
 
-exhibitionHeaderSec.appendChild(headerTitle); //add under the exhibition header section
+    artistImg.className = "artist-img";
 
-const placeTitle = document.createElement("h2"); // h2 header for the text "place"
+    artistImg.src = "assets/".concat(artistData[0]["artist_img"]);
 
-placeTitle.id = "place-title";
+    artistImgDiv.appendChild(artistImg);
 
-placeTitle.textContent = "Place";
+    const bioDiv = document.createElement("div");
 
-exhibitionHeaderSec.appendChild(placeTitle); //add under the exhibition header section
+    bioDiv.className = "bio-div";
 
-const placeContent = document.createElement("p"); // p for the place
+    artist.appendChild(bioDiv);
 
-placeContent.id = "place-content";
+    for (let j = 0; j < bioTitles[0][1].length; j++) {
+      const title = document.createElement("h5");
 
-placeContent.textContent = place;
+      title.classList.add("bio-title");
 
-exhibitionHeaderSec.appendChild(placeContent); //add under the exihibition header section
+      title.textContent = bioTitles[i][j];
 
-const dateTitle = document.createElement("h2"); // h2 header for the text "Date"
+      bioDiv.appendChild(title);
 
-dateTitle.id = "date-title";
+      const bioContent = document.createElement("p");
 
-dateTitle.textContent = "Date";
+      bioContent.textContent = bioContents[i][j].replaceAll("&#44", ",");
 
-exhibitionHeaderSec.appendChild(dateTitle); //add under the exhibition header section
+      bioContent.className = "bio-content";
 
-const dateContent = document.createElement("p"); // p for the date
+      bioDiv.appendChild(bioContent);
+    }
 
-dateContent.id = "date-content";
+    const title = document.createElement("h1");
 
-dateContent.textContent = date;
+    title.textContent = "Gallery";
 
-exhibitionHeaderSec.appendChild(dateContent);
+    title.classList.add("gallery-title");
 
-for (let i = 0; i < artists.length; i++) {
-  const artist = document.createElement("p");
+    section.append(title);
 
-  artist.textContent = artists[i];
+    const galleryDiv = document.createElement("div");
 
-  artist.classList.add('artist');
+    galleryDiv.classList.add("gallery-div");
 
-  exhibitionHeaderSec.appendChild(artist);
-}
+    section.append(galleryDiv);
 
-for (let i = 0; i < artists.length; i++) {
-  const artist = document.createElement("section");
+    for (let j = startId; j <= endId; j++) {
+      let link = document.createElement("a");
 
-  artist.classList.add("artist-sec");
+      link.setAttribute("target", "_blank");
 
-  exhibition.appendChild(artist);
+      link.href = "assets/".concat(paintingData[j]["img_url"]);
 
-  const artistImgDiv = document.createElement("div");
+      link.classList.add("gallery-img-link");
 
-  artistImgDiv.className = "artist-img-div";
+      galleryDiv.appendChild(link);
 
-  artist.appendChild(artistImgDiv);
+      let div = document.createElement("div");
 
-  const artistImg = document.createElement("img");
+      div.classList.add("gallery-img-div");
 
-  artistImg.className = "artist-img";
+      link.appendChild(div);
 
-  artistImg.src = artistsImg[i];
+      let img = document.createElement("img");
 
-  artistImgDiv.appendChild(artistImg);
+      img.src = "assets/".concat(paintingData[j]["img_url"]);
 
-  const bioDiv = document.createElement("div");
+      img.classList.add("gallery-img");
 
-  bioDiv.className = "bio-div";
+      div.appendChild(img);
 
-  artist.appendChild(bioDiv);
+      let artist = document.createElement("p");
 
-  for (let j = 0; j < bioData[i].length; j++) {
-    const title = document.createElement("h5");
-    title.classList.add("bio-title");
-    title.textContent = bioData[i][j][0];
-    bioDiv.appendChild(title);
-    const bioContent = document.createElement("p");
-    bioContent.textContent = bioData[i][j][1];
-    bioContent.className = "bio-content";
-    bioDiv.appendChild(bioContent);
+      artist.textContent = "Artist - ".concat(paintingData[j]["name"]);
+
+      div.appendChild(artist);
+
+      let caption = document.createElement("p");
+
+      caption.textContent = "Title - ".concat(paintingData[j]["title"]);
+
+      div.appendChild(caption);
+
+      let measurement = document.createElement("p");
+
+      measurement.textContent = "Size - "
+        .concat(paintingData[j]["width"])
+        .concat('" ')
+        .concat(paintingData[j]["height"])
+        .concat('"'); //
+
+      div.appendChild(measurement);
+
+      let other = document.createElement("p");
+
+      other.textContent = paintingData[j]["size"]
+        .concat(" - ")
+        .concat(paintingData[j]["drawing type"]); //
+
+      div.appendChild(other);
+
+      let price = document.createElement("p");
+
+      price.textContent = "Price - ".concat(paintingData[j]["price"]);
+
+      div.appendChild(price);
+    }
   }
-
-  const title = document.createElement("h1"); // create h1 for header
-
-  title.textContent = "Gallery"; // give h1 value of "Gallery"
-
-  title.classList.add("gallery-title"); //give the class name "gallery-title to that h1 element"
-
-  exhibition.append(title); // add created element title(header) into the section element
-
-  const galleryDiv = document.createElement("div"); //create container for all img div
-
-  galleryDiv.classList.add("gallery-div"); //class name for galleryDiv
-
-  exhibition.append(galleryDiv); // add div to the section
-
-  //loop for the every data in the imageData array
-for (let j = 0; j < exhibitionImageData[i][i].length; j++) {
-  let link = document.createElement("a"); // create a tag to be clickable
-
-  link.setAttribute("target", "_blank"); // target blank for new tab
-
-  link.href = "assets/images/".concat(exhibitionImageData[i][j][0]); //first index of two dimensional array is the url of image
-
-  link.classList.add("gallery-img-link"); // give the class name "gallery-img-link"
-
-  galleryDiv.appendChild(link); //cover div with a tag so it will be clickable
-
-  let div = document.createElement("div"); //create container for the image and other data
-
-  div.classList.add("gallery-img-div"); //give the class name "gallery-img-div" to the div
-
-  link.appendChild(div); // add div
-
-  let img = document.createElement("img"); // create img element
-
-  img.src = "assets/images/".concat(exhibitionImageData[i][j][0]); // first index of two dimensional array is the url of image
-
-  img.classList.add("gallery-img"); // give class name to the image
-
-  div.appendChild(img); // add img to the div
-
-  let artist = document.createElement("p"); // create p element for artist
-
-  artist.textContent = "Artist - ".concat(exhibitionImageData[i][j][1]); //index 1 is the artist name
-
-  div.appendChild(artist);
-
-  let caption = document.createElement("p"); //create p for image title
-
-  caption.textContent = "Title - ".concat(exhibitionImageData[i][j][2]); // index 2 is the image title
-
-  div.appendChild(caption); //add caption to the div
-
-  let measurement = document.createElement("p"); //create p for witdh and height data
-
-  measurement.textContent = "Size - "
-    .concat(exhibitionImageData[i][j][3])
-    .concat('" ')
-    .concat(exhibitionImageData[i][j][4])
-    .concat('"'); // index 3 is width and index 4 is the height of the image
-
-  div.appendChild(measurement); //add measurement to div
-
-  let other = document.createElement("p"); //create p for other data; size and drawing type
-
-  other.textContent = exhibitionImageData[i][j][5].concat(" - ").concat(exhibitionImageData[i][j][6]); // index 5 is size and 6 is the drawing type of the image
-
-  div.appendChild(other); //add that element to the div
-
-  let price = document.createElement("p"); //create p for price
-
-  price.textContent = "Price - ".concat(exhibitionImageData[i][j][7]); //index 7 is the price of the picture
-
-  div.appendChild(price); // add price to the img
 }
-  
-}
-
-

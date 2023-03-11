@@ -9,7 +9,7 @@ var paintingUrl =
 var bioUrl =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXXprAoYqZ_t_pIIMTGlO_AuMDXBW4Na9u1Gn1qlI2_9xD4Qy-y6Esd2FiBe4TvIgb71dDX3tMsN0Z/pub?output=csv";
 
-var exhbitionData = [];
+var exhibitionData = [];
 var artistData = [];
 var paintingData = [];
 var bio = [];
@@ -18,6 +18,7 @@ var fetchData = (url, dataArray) => {
   return fetch(url)
     .then((response) => response.text())
     .then((data) => {
+      data = data.replace(/\r/g, "");
       const rows = data.split("\n");
       const headers = rows[0].split(",");
       const result = rows.slice(1).map((row) => {
@@ -31,14 +32,13 @@ var fetchData = (url, dataArray) => {
 };
 
 Promise.all([
-  fetchData(exhibtionUrl, exhbitionData),
+  fetchData(exhibtionUrl, exhibitionData),
   fetchData(artistUrl, artistData),
   fetchData(paintingUrl, paintingData),
   fetchData(bioUrl, bio),
 ])
   .then(() => {
     createBio();
-    // do something with the data, e.g. append to the DOM
   })
   .catch((error) => console.error(error));
 
@@ -47,10 +47,10 @@ function createBio() {
     let bioTitles = [];
     let bioContents = [];
     let paintingList = [];
-
+    console.log(bio);
     bioTitles.push(bio[i]["title"].split("_"));
 
-    bioContents.push(bio[i]["content\r"].split("_"));
+    bioContents.push(bio[i]["content"].split("_"));
 
     paintingList = artistData[i]["paintings"].split("-");
 
@@ -97,66 +97,65 @@ function createBio() {
 
       const bioContent = document.createElement("p");
 
-      bioContent.textContent = bioContents[i][j];
+      bioContent.textContent = bioContents[i][j].replaceAll("&#44", ",");
 
       bioContent.className = "bio-content";
 
       bioDiv.appendChild(bioContent);
     }
 
-    const title = document.createElement("h1"); // create h1 for header
+    const title = document.createElement("h1"); 
 
-    title.textContent = "Gallery"; // give h1 value of "Gallery"
+    title.textContent = "Gallery";
 
-    title.classList.add("gallery-title"); //give the class name "gallery-title to that h1 element"
+    title.classList.add("gallery-title"); 
 
-    section.append(title); // add created element title(header) into the section element
+    section.append(title); 
 
-    const galleryDiv = document.createElement("div"); //create container for all img div
+    const galleryDiv = document.createElement("div"); 
 
-    galleryDiv.classList.add("gallery-div"); //class name for galleryDiv
+    galleryDiv.classList.add("gallery-div"); 
 
-    section.append(galleryDiv); // add div to the section
+    section.append(galleryDiv); 
 
-    //loop for the every data in the imageData array
     for (let j = startId; j <= endId; j++) {
-      let link = document.createElement("a"); // create a tag to be clickable
+      let link = document.createElement("a"); 
 
-      link.setAttribute("target", "_blank"); // target blank for new tab
+      link.setAttribute("target", "_blank"); 
 
       link.href = "assets/".concat(paintingData[j]["img_url"]); //
 
-      link.classList.add("gallery-img-link"); // give the class name "gallery-img-link"
+      link.classList.add("gallery-img-link"); 
 
-      galleryDiv.appendChild(link); //cover div with a tag so it will be clickable
+      galleryDiv.appendChild(link); 
 
-      let div = document.createElement("div"); //create container for the image and other data
+      let div = document.createElement("div");
 
-      div.classList.add("gallery-img-div"); //give the class name "gallery-img-div" to the div
+      div.classList.add("gallery-img-div");
 
-      link.appendChild(div); // add div
+      link.appendChild(div); // 
 
-      let img = document.createElement("img"); // create img element
+      let img = document.createElement("img");
 
       img.src = "assets/".concat(paintingData[j]["img_url"]);
 
-      img.classList.add("gallery-img"); // give class name to the image
+      img.classList.add("gallery-img"); 
 
-      div.appendChild(img); // add img to the div
+      div.appendChild(img);
 
-      let artist = document.createElement("p"); // create p element for artist
+      let artist = document.createElement("p"); 
 
       artist.textContent = "Artist - ".concat(paintingData[j]["name"]); //
 
       div.appendChild(artist);
 
-      let caption = document.createElement("p"); //create p for image title
+      let caption = document.createElement("p"); 
 
-      caption.textContent = "Title - ".concat(paintingData[j]["title"]); //
+      caption.textContent = "Title - ".concat(paintingData[j]["title"]); 
 
-      div.appendChild(caption); //add caption to the div
+      div.appendChild(caption); 
 
-      let measurement = document.createElement("p"); //create p for witdh and height data
+      let measurement = document.createElement("p"); 
 
       measurement.textContent = "Size - "
         .concat(paintingData[j]["width"])
@@ -164,21 +163,29 @@ function createBio() {
         .concat(paintingData[j]["height"])
         .concat('"'); //
 
-      div.appendChild(measurement); //add measurement to div
+      div.appendChild(measurement); 
 
-      let other = document.createElement("p"); //create p for other data; size and drawing type
+      let other = document.createElement("p"); 
 
       other.textContent = paintingData[j]["size"]
         .concat(" - ")
-        .concat(paintingData[j]["drawing type"]); //
+        .concat(paintingData[j]["drawing type"]); 
 
-      div.appendChild(other); //add that element to the div
+      div.appendChild(other);
 
-      let price = document.createElement("p"); //create p for price
+      let price = document.createElement("p"); 
 
-      price.textContent = "Price - ".concat(paintingData[j]["price"]); //
+      price.textContent = "Price - ".concat(paintingData[j]["price"]); 
 
-      div.appendChild(price); // add price to the img
+      div.appendChild(price); 
+
+      const status = document.createElement("p");
+
+      status.textContent = paintingData[i]["status"];
+
+      status.className = "painting-status";
+
+      div.appendChild(status);
     }
   }
 }
