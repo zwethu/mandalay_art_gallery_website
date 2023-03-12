@@ -337,6 +337,7 @@ footer {
   font-weight: bold;
   padding: 16px 0px;
   border-top: 1px solid #818181;
+  margin-top: 8px;
 }
 
 .exhibition-title{
@@ -347,9 +348,9 @@ footer {
 }
 
 .exhibition-img-date-place-div{
-  padding-top: 24px;
+  padding-top: 32px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 /* normal phones size */

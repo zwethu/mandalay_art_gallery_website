@@ -99,13 +99,19 @@ function createCurrentExhibition(exhibitionId) {
 
   exhibitionImgTextDiv.appendChild(exhibitionName);
 
+  const dateAndPlaceDiv = document.createElement('div');
+
+  dateAndPlaceDiv.className = 'exhibition-img-date-place-div';
+
+  exhibitionImgTextDiv.appendChild(dateAndPlaceDiv);
+
   const place = document.createElement("p");
 
   place.className = "exhibition-place";
 
   place.textContent = exhibitionData[exhibitionId]["place"];
 
-  exhibitionImgTextDiv.appendChild(place);
+  dateAndPlaceDiv.appendChild(place);
 
   const date = document.createElement("p");
 
@@ -113,7 +119,7 @@ function createCurrentExhibition(exhibitionId) {
 
   date.textContent = exhibitionData[exhibitionId]["date"];
 
-  exhibitionImgTextDiv.appendChild(date);
+  dateAndPlaceDiv.appendChild(date);
 }
 
 function createPreviousExhibitions(exhibitionId) {

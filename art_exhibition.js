@@ -38,29 +38,27 @@ Promise.all([
   fetchData(bioUrl, bio),
 ])
   .then(() => {
-    createBio();
+    console.log();
+    const index = new URLSearchParams(window.location.search).get('exhibition');
+    createBio(exhibitionData[index]['artists'].split('_'));
   })
   .catch((error) => console.error(error));
 
-function createBio() {
-  for (let i = 0; i < 1; i++) {
+function createBio(artists) {
+  for (let i = 0; i < artists.length; i++) {
     let bioTitles = [];
 
     let bioContents = [];
 
     let paintingList = [];
 
-    console.log(bio);
+    bioTitles.push(bio[artists[i]]["title"].split("_"));
 
-    bioTitles.push(bio[i]["title"].split("_"));
+    bioContents.push(bio[artists[i]]["content"].split("_"));
 
-    bioContents.push(bio[i]["content"].split("_"));
+    paintingList = artistData[artists[i]]["paintings"].split("-");
 
-    paintingList = artistData[i]["paintings"].split("-");
-
-    let startId = paintingList[0];
-
-    let endId = paintingList[1];
+    artistData[artists[i]]["paintings"].split("-")[1];
 
     const section = document.getElementById("exhibition");
 
@@ -80,7 +78,7 @@ function createBio() {
 
     artistImg.className = "artist-img";
 
-    artistImg.src = "assets/".concat(artistData[0]["artist_img"]);
+    artistImg.src = "assets/".concat(artistData[i]["artist_img"]);
 
     artistImgDiv.appendChild(artistImg);
 
@@ -90,18 +88,18 @@ function createBio() {
 
     artist.appendChild(bioDiv);
 
-    for (let j = 0; j < bioTitles[0][1].length; j++) {
+    for (let j = 0; j < bioTitles[0].length; j++) {
       const title = document.createElement("h5");
 
       title.classList.add("bio-title");
 
-      title.textContent = bioTitles[i][j];
+      title.textContent = bioTitles[0][j];
 
       bioDiv.appendChild(title);
 
       const bioContent = document.createElement("p");
 
-      bioContent.textContent = bioContents[i][j].replaceAll("&#44", ",");
+      bioContent.textContent = bioContents[0][j].replaceAll("&#44", ",");
 
       bioContent.className = "bio-content";
 
@@ -122,7 +120,13 @@ function createBio() {
 
     section.append(galleryDiv);
 
-    for (let j = startId; j <= endId; j++) {
+    let id = artistData[artists[i]]["paintings"].split("-");
+
+    let start = parseInt(id[0]);
+
+    let end = parseInt(id[1]);
+
+    for (var j = start; j <= end; j++) {
       let link = document.createElement("a");
 
       link.setAttribute("target", "_blank");
@@ -182,6 +186,14 @@ function createBio() {
       price.textContent = "Price - ".concat(paintingData[j]["price"]);
 
       div.appendChild(price);
+
+      const status = document.createElement("p");
+
+      status.textContent = paintingData[i]["status"];
+
+      status.className = "painting-status";
+
+      div.appendChild(status);
     }
   }
 }
