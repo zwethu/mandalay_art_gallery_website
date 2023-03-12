@@ -40,9 +40,67 @@ Promise.all([
   .then(() => {
     console.log();
     const index = new URLSearchParams(window.location.search).get('exhibition');
+    createExhibitionHeader(index);
     createBio(exhibitionData[index]['artists'].split('_'));
   })
   .catch((error) => console.error(error));
+
+  function createExhibitionHeader(exhibitionId){
+    const section = document.getElementById("exhibition");
+
+    const exhibitionHeading = document.createElement('div');
+
+    exhibitionHeading.id = 'exhibition-header';
+
+    section.appendChild(exhibitionHeading);
+
+    const exhibitionTitle = document.createElement('h1');
+
+    exhibitionTitle.textContent = exhibitionData[exhibitionId]['title'].replaceAll("&#44",",");
+
+    exhibitionTitle.classList.add('exhibition-name');
+
+    exhibitionHeading.appendChild(exhibitionTitle);
+
+    const dateAndPlaceDiv = document.createElement('div');
+
+    dateAndPlaceDiv.className = 'exhibition-date-place-div';
+  
+    exhibitionHeading.appendChild(dateAndPlaceDiv);
+  
+    const place = document.createElement("p");
+  
+    place.className = "exhibition-place";
+  
+    place.textContent = exhibitionData[exhibitionId]["place"];
+  
+    dateAndPlaceDiv.appendChild(place);
+  
+    const date = document.createElement("p");
+  
+    date.className = "exhibition-date";
+  
+    date.textContent = exhibitionData[exhibitionId]["date"];
+  
+    dateAndPlaceDiv.appendChild(date);
+
+    const artistsText = document.createElement('p');
+
+    artistsText.textContent = 'Artists';
+
+    artistsText.classList.add('artistsText');
+
+    exhibitionHeading.appendChild(artistsText);
+
+    let data = exhibitionData[exhibitionId]['artists'].split('_');
+
+    for(let i = 0 ; i < data.length ; i++){
+      const artistName = document.createElement('p');
+      artistName.textContent = artistData[data[i]]['name'];
+      artistName.classList.add('artist-name');
+      exhibitionHeading.appendChild(artistName);
+    }
+  }
 
 function createBio(artists) {
   for (let i = 0; i < artists.length; i++) {
@@ -76,7 +134,7 @@ function createBio(artists) {
 
     const artistImg = document.createElement("img");
 
-    artistImg.className = "artist-img";
+    artistImg.className = "bio-img";
 
     artistImg.src = "assets/".concat(artistData[i]["artist_img"]);
 

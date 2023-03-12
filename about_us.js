@@ -74,7 +74,7 @@ function createBio() {
 
     const artistImg = document.createElement("img");
 
-    artistImg.className = "artist-img";
+    artistImg.className = "bio-img";
 
     artistImg.src = "assets/".concat(artistData[0]["artist_img"]);
 
