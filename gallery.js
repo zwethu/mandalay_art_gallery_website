@@ -38,11 +38,11 @@ Promise.all([
   fetchData(bioUrl, bio),
 ])
   .then(() => {
-    console.log(exhibitionData);
-    console.log(artistData);
-    console.log(paintingData);
-    console.log(bio);
-    createGallery(1,11);  
+    const index = new URLSearchParams(window.location.search).get("artist");
+    var list = artistData[index]['paintings'].split('-');
+    var start = parseInt(list[0]);
+    var end = parseInt(list[1]);
+    createGallery(start,end);  
   })
   .catch((error) => console.error(error));
 
