@@ -51,7 +51,7 @@ function createGallery(startPoint, endPoint) {
 
   const title = document.createElement("h1"); 
 
-  title.textContent = "Gallery";
+  title.textContent = paintingData[startPoint]['name'].concat("'s Paintings");
 
   title.classList.add("gallery-title"); 
 

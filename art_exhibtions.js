@@ -1,4 +1,4 @@
-var exhibtionUrl =
+var exhibitionUrl =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSGv3CZajv7LkLXf_IaUVh29irPrwGh-IQ9s3Hef75987JmZJgaMR_7evbvzUjExc3hKuefhoKQUN90/pub?output=csv";
 
 var artistUrl =
@@ -32,7 +32,7 @@ var fetchData = (url, dataArray) => {
     });
 };
 Promise.all([
-  fetchData(exhibtionUrl, exhibitionData),
+  fetchData(exhibitionUrl, exhibitionData),
   fetchData(artistUrl, artistData),
   fetchData(paintingUrl, paintingData),
   fetchData(bioUrl, bio),
@@ -135,6 +135,8 @@ function createPreviousExhibitions(exhibitionId) {
 
   currentExhibitionTitle.className = "exhibition-title";
 
+  currentExhibitionTitle.classList.add('pre-exhibition-title');
+
   currentExhibitionTitle.textContent = "Previous Art Exhibitions";
 
   currentExhibition.appendChild(currentExhibitionTitle);
@@ -153,6 +155,8 @@ function createPreviousExhibitions(exhibitionId) {
       const currentExhibitionDiv = document.createElement("div");
 
       currentExhibitionDiv.className = "exhibition-div";
+
+
 
       link.appendChild(currentExhibitionDiv);
 
